@@ -44,8 +44,12 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
             if (hAxis != 0 || vAxis != 0) AN.SetBool("isWalk", true);
             else AN.SetBool("isWalk", false);
 
-            //플레이어 점프시
+            //플레이어 점프
             if (Input.GetKeyDown(KeyCode.Space)) StartCoroutine(PlayerJump());
+
+            //플레이어 공격
+            if (Input.GetMouseButton(1)) PV.RPC("PlayerAttack", RpcTarget.AllBuffered);
+
         }
     }
 
@@ -59,6 +63,8 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
         PhotonNetwork.LocalPlayer.NickName = _name;  
         PV.RPC("UpdateName", RpcTarget.AllBuffered);
     }
+    [PunRPC]
+    void PlayerAttack() => AN.SetBool("isAttack", true);
 
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

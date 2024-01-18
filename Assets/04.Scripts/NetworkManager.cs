@@ -11,9 +11,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public InputField NickNameInput;
     public GameObject ConnectPanel; //접속 창
     public GameObject UIPanel; //UI 창
-
     public InputField ReNameInPut;
-
+    public Text RoomNameText;
+    public Text JoinPlayerNumText;
+    public Text[] JoinPlayerNameTexts;
 
     private void Awake()
     {
@@ -67,9 +68,36 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         UIPanel.SetActive(false); //UI창 비활성화
     }
 
+    //플레이어 이름 재설정
     public void ReNamePlayer()
     {
         GameObject player = GameObject.FindWithTag("Player").gameObject;
         player.GetComponent<PlayerCtrl>().PV.RPC("ReName", RpcTarget.AllBuffered, ReNameInPut.text);
+    }
+
+    //방 정보 보여주기
+    public void ShowRoomInfo()
+    {
+        ResetRoomInfo();
+
+        RoomNameText.text += PhotonNetwork.CurrentRoom.Name;
+        JoinPlayerNumText.text += $"{PhotonNetwork.CurrentRoom.PlayerCount}명";
+
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            JoinPlayerNameTexts[i].text = PhotonNetwork.PlayerList[i].NickName;
+        }
+    }
+
+    //방 정보 리셋
+    public void ResetRoomInfo()
+    {
+        RoomNameText.text = "방 이름: ";
+        JoinPlayerNumText.text = "접속중: ";
+
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            JoinPlayerNameTexts[i].text = "";
+        }
     }
 }
