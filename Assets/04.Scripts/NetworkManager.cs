@@ -12,6 +12,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject ConnectPanel; //접속 창
     public GameObject UIPanel; //UI 창
 
+    public InputField ReNameInPut;
+
+
     private void Awake()
     {
         Screen.SetResolution(960, 540, false);
@@ -19,7 +22,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.SerializationRate = 30;
     }
 
-    //접속
+    //포톤 온라인 서버 접속
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
 
     public override void OnConnectedToMaster()
@@ -27,6 +30,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.NickName = NickNameInput.text;
         PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 6 }, null); //총 인원수 6명
     }
+
 
     //방 접속시
     public override void OnJoinedRoom()
@@ -61,5 +65,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         ConnectPanel.SetActive(true); //접속창 활성화
         UIPanel.SetActive(false); //UI창 비활성화
+    }
+
+    public void ReNamePlayer()
+    {
+        GameObject player = GameObject.FindWithTag("Player").gameObject;
+        player.GetComponent<PlayerCtrl>().PV.RPC("ReName", RpcTarget.AllBuffered, ReNameInPut.text);
     }
 }

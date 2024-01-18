@@ -335,7 +335,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 116599167}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1610845548}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &116599167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17538,7 +17550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &811673801
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18223,6 +18235,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1489814879}
+        m_TargetAssemblyTypeName: NetworkManager, Assembly-CSharp
+        m_MethodName: ReNamePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1163055696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18741,6 +18765,7 @@ MonoBehaviour:
   NickNameInput: {fileID: 267843746}
   ConnectPanel: {fileID: 2062323657}
   UIPanel: {fileID: 811673800}
+  ReNameInPut: {fileID: 1922725956}
 --- !u!1 &1607723056
 GameObject:
   m_ObjectHideFlags: 0
@@ -18847,13 +18872,14 @@ GameObject:
   - component: {fileID: 1610845550}
   - component: {fileID: 1610845552}
   - component: {fileID: 1610845553}
+  - component: {fileID: 1610845554}
   m_Layer: 5
   m_Name: RenamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1610845549
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18944,6 +18970,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 0, y: 8}
   m_UseGraphicAlpha: 1
+--- !u!114 &1610845554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610845548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9deb64beeae35e40bd85475ada58351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReNameInPut: {fileID: 1922725956}
 --- !u!1 &1676917220
 GameObject:
   m_ObjectHideFlags: 0
@@ -21256,7 +21295,7 @@ GameObject:
   - component: {fileID: 1922725960}
   - component: {fileID: 1922725959}
   m_Layer: 5
-  m_Name: NickNameInputField
+  m_Name: ReNameInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21672,7 +21711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2062323658
 RectTransform:
   m_ObjectHideFlags: 0

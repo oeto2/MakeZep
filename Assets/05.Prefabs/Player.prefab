@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 1168599900752166690}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   SR: {fileID: 5140245569362772530}
   PV: {fileID: 0}
   NickNameText: {fileID: 0}
-  HealthImage: {fileID: 0}
+  MainCamera: {fileID: 0}
 --- !u!95 &6112208145871575202
 Animator:
   serializedVersion: 5
@@ -429,6 +429,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 937713259250350414}
   - {fileID: 5401147512740506039}
+  - {fileID: 1168599900752166690}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

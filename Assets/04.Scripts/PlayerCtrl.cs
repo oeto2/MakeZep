@@ -51,6 +51,15 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
 
     [PunRPC]
     void FlipXRPC(bool isFlip) => SR.flipX = isFlip; //마우스 위치 따라 방향 전환
+    [PunRPC]
+    void UpdateName() => NickNameText.text = PhotonNetwork.NickName; //플레이어 이름 새로고침
+    [PunRPC]
+    void ReName(string _name) //플레이어 이름 변경
+    {
+        PhotonNetwork.LocalPlayer.NickName = _name;  
+        PV.RPC("UpdateName", RpcTarget.AllBuffered);
+    }
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
