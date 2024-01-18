@@ -336,7 +336,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -24, y: -48.5}
+        - {x: -24, y: -18.5}
+        - {x: -40, y: -18.5}
+        - {x: -40, y: -48.5}
+      - - {x: 24, y: -48.5}
+        - {x: 24, y: -18.5}
+        - {x: 40, y: -18.5}
+        - {x: 40, y: -48.5}
       tessellationDetail: 0
       bones: []
       spriteID: 758202652c7f1914cb7ad7e939518e93
@@ -1551,6 +1559,7 @@ TextureImporter:
       mainlevbuild_61: -716116585
       mainlevbuild_62: 1419718476
       mainlevbuild_63: 1427338264
+      mainlevbuild_64: -202834727
       mainlevbuild_7: -1312639659
       mainlevbuild_8: 126577817
       mainlevbuild_9: -299151792
