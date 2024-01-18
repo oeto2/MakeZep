@@ -29,13 +29,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
     //방 접속시
-    public override void OnJoinedRoom() 
+    public override void OnJoinedRoom()
     {
         ConnectPanel.SetActive(false); //접속창 비활성화
+        Spawn();
     }
 
     //Esc키 입력시 접속 끊기
     private void Update() { if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); }
+
+    //플레이어 생성
+    public void Spawn() => PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
 
     //접속이 끊길 경우
     public override void OnDisconnected(DisconnectCause cause)
