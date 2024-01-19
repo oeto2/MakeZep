@@ -10,4 +10,5 @@ public class UIPanel : MonoBehaviour
 
     public void ShowReNamePanel() { if (!SelectChPanel.activeSelf) ReNamePanel.SetActive(true); }
     public void ShowSelectChPanel() { if (!ReNamePanel.activeSelf) SelectChPanel.SetActive(true); }
+
 }

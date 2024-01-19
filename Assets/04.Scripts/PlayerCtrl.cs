@@ -16,6 +16,8 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
 
     //캐릭터 선택전용 값
     public Sprite[] PlayerSprite;
+
+    //애니메이터 컨트롤러
     public RuntimeAnimatorController[] PlayerAnimator;
 
     bool isWall; //벽 감지
@@ -32,6 +34,7 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
+
         if (PV.IsMine)
         {
             MainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, MainCamera.transform.position.z);
@@ -96,7 +99,6 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
 
                 //이름 위치 변경
                 NickNameText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0.179f, -0.591f, 0);
-                //NickNameText.transform.position = new Vector3(0.179f, -0.591f, 0);
 
                 //애니메이션 변경
                 SR.sprite = PlayerSprite[0];
@@ -108,7 +110,6 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
 
                 //이름 위치 변경
                 NickNameText.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.07f, -0.24f, 0);
-                //NickNameText.transform.position = new Vector3(-0.07f, -0.24f, 0);
 
                 //애니메이션 변경
                 SR.sprite = PlayerSprite[1];
