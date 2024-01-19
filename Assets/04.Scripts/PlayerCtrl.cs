@@ -14,6 +14,10 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
     public Text NickNameText;
     public Camera MainCamera;
 
+    //캐릭터 선택전용 값
+    public Sprite[] PlayerSprite;
+    public RuntimeAnimatorController[] PlayerAnimator;
+
     bool isWall; //벽 감지
     Vector3 curpos; //현재 위치
 
@@ -66,7 +70,6 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void PlayerAttack() => AN.SetBool("isAttack", true);
 
-
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
@@ -79,5 +82,38 @@ public class PlayerCtrl : MonoBehaviourPunCallbacks, IPunObservable
         yield return new WaitForSeconds(0.1f);
         AN.SetBool("isJump", false);
         yield return null;
+    }
+
+    
+    //캐릭터 바꾸기
+    [PunRPC]
+    public void ChangeCharacterAnimation(int _selctNum)
+    {
+        switch((PlayerType)_selctNum)
+        {
+            //펭귄 선택
+            case PlayerType.penguin:
+
+                //이름 위치 변경
+                NickNameText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0.179f, -0.591f, 0);
+                //NickNameText.transform.position = new Vector3(0.179f, -0.591f, 0);
+
+                //애니메이션 변경
+                SR.sprite = PlayerSprite[0];
+                AN.runtimeAnimatorController = PlayerAnimator[0];
+                break;
+
+            //전사 선택
+            case PlayerType.warrior:
+
+                //이름 위치 변경
+                NickNameText.GetComponent<RectTransform>().anchoredPosition = new Vector3(-0.07f, -0.24f, 0);
+                //NickNameText.transform.position = new Vector3(-0.07f, -0.24f, 0);
+
+                //애니메이션 변경
+                SR.sprite = PlayerSprite[1];
+                AN.runtimeAnimatorController = PlayerAnimator[1];
+                break;
+        }
     }
 }

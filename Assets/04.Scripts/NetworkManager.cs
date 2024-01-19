@@ -15,6 +15,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public Text RoomNameText;
     public Text JoinPlayerNumText;
     public Text[] JoinPlayerNameTexts;
+    public GameObject Player;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         UIPanel.SetActive(true);
         ConnectPanel.SetActive(false); //접속창 비활성화
         Spawn();
+        Player = GameObject.FindWithTag("Player").gameObject;
     }
 
     //Esc키 입력시 접속 끊기
@@ -71,8 +73,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     //플레이어 이름 재설정
     public void ReNamePlayer()
     {
-        GameObject player = GameObject.FindWithTag("Player").gameObject;
-        player.GetComponent<PlayerCtrl>().PV.RPC("ReName", RpcTarget.AllBuffered, ReNameInPut.text);
+        //GameObject player = GameObject.FindWithTag("Player").gameObject;
+        Player.GetComponent<PlayerCtrl>().PV.RPC("ReName", RpcTarget.AllBuffered, ReNameInPut.text);
     }
 
     //방 정보 보여주기
@@ -99,5 +101,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             JoinPlayerNameTexts[i].text = "";
         }
+    }
+
+    //플레이어 캐릭터 변경
+    public void ChangePlayer(int _selectNum)
+    {
+        //GameObject player = GameObject.FindWithTag("Player").gameObject;
+        Player.GetComponent<PlayerCtrl>().PV.RPC("ChangeCharacterAnimation", RpcTarget.AllBuffered, _selectNum);
     }
 }
