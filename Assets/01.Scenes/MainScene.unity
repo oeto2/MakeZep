@@ -96199,7 +96199,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 21713788}
         m_TargetAssemblyTypeName: ChattingScript, Assembly-CSharp
-        m_MethodName: InputEnter
+        m_MethodName: InputChattingRPC
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
