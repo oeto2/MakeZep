@@ -7,10 +7,11 @@ using Photon.Realtime;
 
 public class ChattingScript : MonoBehaviourPunCallbacks
 {
+    public PhotonView ChattingPhotonView;
     public InputField ChattingInputField;
     public Text[] ChatText;
 
-    public void InputChattingRPC() => photonView.RPC("InputEnter", RpcTarget.AllBuffered);
+    public void InputChattingRPC() => ChattingPhotonView.RPC("InputEnter", RpcTarget.AllBuffered);
 
     [PunRPC]
     public void InputEnter()
