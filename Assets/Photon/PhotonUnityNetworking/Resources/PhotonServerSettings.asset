@@ -15,7 +15,7 @@ MonoBehaviour:
   AppSettings:
     AppIdRealtime: ab2023d1-190e-4505-a1dc-2aa07adf352d
     AppIdFusion: 
-    AppIdChat: 
+    AppIdChat: 85839b13-c666-4655-951e-f0698451c591
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
@@ -46,6 +46,10 @@ MonoBehaviour:
   - ChangePlayer
   - ChangeCharacterAnimation
   - InputEnter
+  - PlayerChatting
+  - PlayerInput
+  - InputText
+  - SendButtonClicked
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
   DevRegionSetOnce: 1
